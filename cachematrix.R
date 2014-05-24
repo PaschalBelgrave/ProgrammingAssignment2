@@ -1,7 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Programming Assignment 2: 
+## Caching Function Results in lexical scoping
+## The overall aim is to allow the results of a function to be stored for
+## later retrieval rather than having to be recalculated every time it
+## is called with the same arguments
 
-## Write a short comment describing this function
+## makeCacheMatrix - Creates a list of functions that get and set 
+## the value of a matrix and its inverse
 
 makeCacheMatrix <- function(x = matrix()) {
 	mat <- NULL
@@ -12,11 +16,15 @@ makeCacheMatrix <- function(x = matrix()) {
 	get <- function() x
 	setinverse <- function(inverse) mat <<-inverse
 	getinverse <- function() mat
-	list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)
+	list(set = set, get = get, setinverse = setinverse, 
+	getinverse = getinverse)
 }
 
 
-## Write a short comment describing this function
+## cacheSolve - calculates the inverse of the matrix created using makeCacheMatrix
+## First it checks whether the result has already been calculated 
+## If it has been calculated it skips the calculation and gets the inverse from 
+## the cache.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
